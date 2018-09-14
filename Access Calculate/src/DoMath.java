@@ -20,7 +20,9 @@ public class DoMath {
 		System.out.println(Calculate.absValue(-5.2));
 		System.out.println(Calculate.max(4, 2));
 		System.out.println(Calculate.max(4, 2, 3));
-
+		System.out.println(Calculate.min(4, 2));
+		System.out.println(Calculate.round2(3.1415));
+		System.out.println(Calculate.exponent(2, 3));
 	}
 
 }

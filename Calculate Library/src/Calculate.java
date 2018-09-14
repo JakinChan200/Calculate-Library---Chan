@@ -80,7 +80,27 @@ public class Calculate {
 		}
 	}
 	
-	public static int min(double num1, double num2, double num3) {
-		
+	public static int min(int num1, int num2) {
+		if(num1 < num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+	
+	public static double round2(double num) {
+		if(((num * 100) % 10) > 5) {
+			num += 0.01;
+		}
+		int roundedNum = (int) (num * 100);
+		return (((double) roundedNum) / 100);	
+	}
+	
+	public static double exponent(double num, int power) {
+		double totalValue = 1;
+		for(int i = 0; i < power; i++) {
+			totalValue *= num;
+		}
+		return totalValue;
 	}
 }
