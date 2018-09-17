@@ -46,8 +46,8 @@ public class Calculate {
 		return ((a * c) + variable + "^2 + " + ((a * d) + (b * c)) + variable + " + " + (b * d));
 	}
 	
-	public static boolean isDivisibleBy(int num1, int num2) {
-		return num1 % num2 == 0;
+	public static boolean isDivisibleBy(int numerator, int denominator) {
+		return numerator % denominator == 0;
 	}
 	
 	public static double absValue(double num) {	
@@ -88,19 +88,65 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double num) {
-		if(((num * 100) % 10) > 5) {
-			num += 0.01;
+	public static double round2(double numToRound) {
+		if(((numToRound * 100) % 10) > 5) {
+			numToRound += 0.01;
 		}
-		int roundedNum = (int) (num * 100);
+		int roundedNum = (int) (numToRound * 100);
 		return (((double) roundedNum) / 100);	
 	}
 	
-	public static double exponent(double num, int power) {
+	public static double exponent(double base, int power) {
 		double totalValue = 1;
 		for(int i = 0; i < power; i++) {
-			totalValue *= num;
+			totalValue *= base;
 		}
 		return totalValue;
+	}
+	
+	public static int factorial(int num){
+		int factorialResult = 1;
+		for(int i = num; i> 0; i--){
+			factorialResult *= i;
+		}
+		return factorialResult;
+	}
+
+	public static boolean isPrime(int num){
+		boolean isItPrime = false;
+		for (int i = 2; i < num; i++){
+			if(isDivisibleBy(num, i) == true){
+				isItPrime = true;
+			}
+		}
+		return isItPrime;
+	}
+
+	public static int gcf(int num1, int num2){
+		int commonFactor = 1;
+		int largerNum;
+		
+		if(num1 > num2){ //finds the larger or the two numbers to be the parameter for the for loop
+			largerNum = num1;
+		}else{
+			largerNum = num2;
+		}
+		
+		for(int i = 1; i < largerNum; i++){ //calculates and returns the gcf
+			if(isDivisibleBy(num1, i) == true && isDivisibleBy(num2, i) == true){
+				if(i > commonFactor){
+					commonFactor = i;
+				}
+			}
+		}
+		return commonFactor;
+	}
+
+	public static double sqrt(double num){
+		double guess = num;
+		while(absValue(num - (guess * guess)) >= 0.005){
+			guess = (0.5 * ((num/guess) + guess));
+		}
+		return round2(guess);
 	}
 }
