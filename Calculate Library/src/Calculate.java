@@ -149,4 +149,8 @@ public class Calculate {
 		}
 		return round2(guess);
 	}
+	
+	public static String quadForm(int a, int b, int c) {
+		(b* -1)
+	}
 }
