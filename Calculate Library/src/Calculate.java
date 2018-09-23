@@ -97,8 +97,10 @@ public class Calculate {
 	}
 	
 	public static double exponent(double base, int power) {
+		
+		//multiplies the base by the totalValue for the number of times dictated in the variable "power"
 		double totalValue = 1;
-		for(int i = 0; i < power; i++) {
+		for(int i = 1; i <= power; i++) {
 			totalValue *= base;
 		}
 		return totalValue;
