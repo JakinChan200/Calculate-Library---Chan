@@ -5,24 +5,28 @@
  */
 
 public class Calculate {
-	//return the square of the input
+	//returns the square of the input
 	public static int square(int num) {
 		return num * num;
 	}
 	
 	public static int cube(int num) {
+		//returns the cube of the input
 		return num * num * num;
 	}
 	
 	public static double average(double num1, double num2) {
+		//returns the average of two doubles
 		return ((num1 + num2)/2);
 	}
 	
 	public static double average(double num1, double num2, double num3) {
+		//returns the average of three doubles
 		return ((num1+num2+num3)/2);
 	}
 	
 	public static double toDegrees(double radian) {
+		//returns the degree value of a radian
 		return (radian * (180/3.14159));
 	}
 	
