@@ -56,6 +56,9 @@ public class Calculate {
 	}
 	
 	public static boolean isDivisibleBy(int numerator, int denominator) {
+		//throws the denominator if it is 0
+		if(denominator == 0) throw new IllegalArgumentException("The denominator cannot be 0");
+		
 		//checks if the numerator is divisible by the denominator and returns either true or false
 		return numerator % denominator == 0;
 	}
@@ -104,6 +107,15 @@ public class Calculate {
 		}
 	}
 	
+	public static double min(double num1, double num2) {
+		//takes two doubles and returns the smaller number
+		if(num1 < num2) {
+			return num1;
+		} else {
+			return num2;
+		}
+	}
+	
 	public static double round2(double numToRound) {
 		//rounds the hundredths place if the number in the thousandths place is five or greater
 		if(numToRound >= 0) {
@@ -118,6 +130,8 @@ public class Calculate {
 	}
 	
 	public static double exponent(double base, int power) {
+		//throws negative numbers and 0
+		if(power <= 0) throw new IllegalArgumentException("you cannot enter a negaive power");
 		
 		//multiplies the base by the totalValue for the number of times dictated in the variable "power"
 		double totalValue = 1;
@@ -129,6 +143,8 @@ public class Calculate {
 	
 	public static int factorial(int num){
 		int factorialResult = 1;
+		//throws negative numbers
+		if(num < 0) throw new IllegalArgumentException("You cannot enter a negative number");
 		
 		//loops through every number between num and 0 and multiplies it
 		for(int i = num; i> 0; i--){
@@ -165,6 +181,8 @@ public class Calculate {
 
 	public static double sqrt(double num){
 		double guess = num;
+		//throws an exception when the input is negative
+		if(num <= 0) throw new IllegalArgumentException("Input cannot be negative");
 		
 		//keeps guessing until the difference between guess^2 and num is less than 0.005
 		while(absValue(num - (guess * guess)) >= 0.005){
@@ -174,6 +192,23 @@ public class Calculate {
 	}
 	
 	public static String quadForm(int a, int b, int c) {
-		(b* -1)
+		int numRoots;
+		if(discriminant(a, b, c) <= 0) throw new IllegalArgumentException("no real roots");
+		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
+		double QuadraticNumerator = sqrt(discriminant(a, b, c));
+		double RootOne = round2((-1 * b) + QuadraticNumerator / (2 * a));
+		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
+		
+		if(RootOne == RootTwo) {
+			numRoots = 1;
+		}else {
+			numRoots = 2;
+		}
+		
+		if(numRoots == 1) {
+			return RootOne + "";
+		}else {
+			return min(RootOne, RootTwo) + " and " + max(RootOne, RootTwo);
+		}
 	}
 }
