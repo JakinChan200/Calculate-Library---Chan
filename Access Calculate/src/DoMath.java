@@ -8,8 +8,8 @@ public class DoMath {
 	public static void main(String[] args) {
 		System.out.println(Calculate.square(5));
 		System.out.println(Calculate.cube(2));
-		System.out.println(Calculate.average(5, 10));
-		System.out.println(Calculate.average(5, 10, 3));
+		System.out.println(Calculate.average(10.0000000, 20.0000000));
+		System.out.println(Calculate.average(10.000000, 20.000000));
 		System.out.println(Calculate.toDegrees(3.14));
 		System.out.println(Calculate.toRadians(180));
 		System.out.println(Calculate.discriminant(2, 3, 4));
@@ -21,7 +21,7 @@ public class DoMath {
 		System.out.println(Calculate.max(4, 2));
 		System.out.println(Calculate.max(4, 2, 3));
 		System.out.println(Calculate.min(4, 2));
-		System.out.println(Calculate.round2(3.1415));
+		System.out.println(Calculate.round2(-1234.57500));
 		System.out.println(Calculate.exponent(2, 3));
 		System.out.println(Calculate.factorial(4));
 		System.out.println(Calculate.isPrime(20));

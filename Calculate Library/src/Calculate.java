@@ -17,44 +17,51 @@ public class Calculate {
 	
 	public static double average(double num1, double num2) {
 		//returns the average of two doubles
-		return ((num1 + num2)/2);
+		return ((num1 + num2) / 2 );
 	}
 	
 	public static double average(double num1, double num2, double num3) {
 		//returns the average of three doubles
-		return ((num1+num2+num3)/2);
+		return ((num1 + num2 + num3) / 3);
 	}
 	
 	public static double toDegrees(double radian) {
-		//returns the degree value of a radian
+		//returns the equivalent degree value of a radian value
 		return (radian * (180/3.14159));
 	}
 	
 	public static double toRadians(double degrees) {
+		//returns the equivalent radian value of a degree value
 		return (degrees * (3.14159/180));
 	}
 	
 	public static double discriminant(double a, double b, double c) {
+		//returns the discriminant of three doubles ((b^2) - 4ac)
 		return (b * b) - 4 * a *c;
 	}
 	
 	public static String toImproperFrac(int wholenum, int numerator, int denominator) {
+		//changes a mixed number in the form of three integers into an improper fraction and returns it 
 		return ((wholenum*denominator)+numerator) + "/" + denominator;
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
+		//changes an improper fraction in the form of teo integers into a mixed number and returns it
 		return ((numerator / denominator) + "_" + (numerator % denominator) + "/" + denominator);
 	}
 	
 	public static String foil(int a, int b, int c, int d, String variable) {
+		//takes in four integers and a string and applies the mathematical process "foil" and returns the result
 		return ((a * c) + variable + "^2 + " + ((a * d) + (b * c)) + variable + " + " + (b * d));
 	}
 	
 	public static boolean isDivisibleBy(int numerator, int denominator) {
+		//checks if the numerator is divisible by the denominator and returns either true or false
 		return numerator % denominator == 0;
 	}
 	
 	public static double absValue(double num) {	
+		//returns the absolute value of the input
 		if(num < 0) {
 			num*= -1;
 		}
@@ -62,6 +69,7 @@ public class Calculate {
 	}
 	
 	public static double max(double num1, double num2) {
+		//returns the larger value between num1 and num2
 		if(num1 > num2) {
 			return num1;
 		} else {
@@ -71,13 +79,16 @@ public class Calculate {
 	
 	public static double max(double num1, double num2, double num3) {
 		double MaxValue;
-		if(num1 > num2) {//takes the larger value between num1 and num2
+		
+		//takes the larger value between num1 and num2
+		if(num1 > num2) {
 			MaxValue = num1;
 		} else {
 			MaxValue = num2;
 		}
 		
-		if(MaxValue > num3) {//takes the final larger number
+		//takes the final larger number
+		if(MaxValue > num3) {
 			return MaxValue;
 		} else {
 			return num3;
@@ -85,6 +96,7 @@ public class Calculate {
 	}
 	
 	public static int min(int num1, int num2) {
+		//takes the smaller value between num1 and num2
 		if(num1 < num2) {
 			return num1;
 		} else {
@@ -93,9 +105,14 @@ public class Calculate {
 	}
 	
 	public static double round2(double numToRound) {
-		if(((numToRound * 100) % 10) > 5) {
-			numToRound += 0.01;
+		//rounds the hundredths place if the number in the thousandths place is five or greater
+		if(numToRound >= 0) {
+			numToRound += 0.005;
+		}else{
+			numToRound += -0.005;
 		}
+		
+		//truncates everything behind the hundredths value 
 		int roundedNum = (int) (numToRound * 100);
 		return (((double) roundedNum) / 100);	
 	}
