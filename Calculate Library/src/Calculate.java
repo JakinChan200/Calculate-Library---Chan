@@ -193,18 +193,26 @@ public class Calculate {
 	
 	public static String quadForm(int a, int b, int c) {
 		int numRoots;
-		if(discriminant(a, b, c) <= 0) throw new IllegalArgumentException("no real roots");
-		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
+		double discriminant = discriminant(a, b, c);
 		double QuadraticNumerator = sqrt(discriminant(a, b, c));
-		double RootOne = round2((-1 * b) + QuadraticNumerator / (2 * a));
+		//if(a == 0) throw new IllegalArgumentException("a cannot be zero");
+		
+		//Checks and returns a statement saying "no real roots" if there are no roots
+		if(discriminant <= 0) {
+			return "no real roots";
+		}
+
+		double RootOne = round2(((-1 * b) + QuadraticNumerator) / (2 * a));
 		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
 		
+		//checks if there are one or two roots
 		if(RootOne == RootTwo) {
 			numRoots = 1;
 		}else {
 			numRoots = 2;
 		}
 		
+		//returns strings based on the number of roots and order it so the smaller root comes first
 		if(numRoots == 1) {
 			return RootOne + "";
 		}else {
