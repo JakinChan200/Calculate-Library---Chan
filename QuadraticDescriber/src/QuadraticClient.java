@@ -7,15 +7,33 @@
 import java.util.*;
 public class QuadraticClient {
 	public static void main(String[] args) {
-		System.out.println("Input your coefficients");
+		//Declare variables and prints introduction
 		Scanner userInput = new Scanner(System.in);
-		double a = userInput.nextDouble();
-		double b = userInput.nextDouble();
-		double c = userInput.nextDouble();
-		userInput.close();
-		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
-		System.out.println(Quadratic.quadrDescriber(a, b, c));
+		boolean keepGoing = true;
+		System.out.println("Welcome to Quadratic Describer" + 
+				"\nProvide values for coefficients a, b, and c");
+		
+		//ask user for variables and print description of graph
+		while(keepGoing){
+			System.out.println();
+			System.out.print("a: ");
+			double a = userInput.nextDouble();
+			System.out.print("b: ");
+			double b = userInput.nextDouble();
+			System.out.print("c: ");
+			double c = userInput.nextDouble();
+			System.out.println();
+		
+			if(a == 0) throw new IllegalArgumentException("a cannot be zero");
+			System.out.println(Quadratic.quadrDescriber(a, b, c));
+			
+			//ask the user if the user wants to quit and closes the loop if yes
+			System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+			String userResponse = userInput.next();
+			if(userResponse.equals("quit")){
+				keepGoing = false;
+				userInput.close();
+			}
+		}
 	}
-
-
 }

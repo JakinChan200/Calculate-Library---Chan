@@ -154,12 +154,12 @@ public class Calculate {
 	}
 
 	public static boolean isPrime(int num){
-		boolean isItPrime = false;
+		boolean isItPrime = true;
 		
 		//goes through all numbers between 0 and num to see if it is divisible
 		for (int i = 2; i < num; i++){
 			if(isDivisibleBy(num, i) == true){
-				isItPrime = true;
+				isItPrime = false;
 			}
 		}
 		return isItPrime;

@@ -2,36 +2,44 @@
  * 
  * @author Jakin Chan
  * @version 2 October 2018
- * 
- * equation, opens, axis of symmetry, vertex, x-intercept, y-intercepts
  */
 
 public class Quadratic {
 	
 	public static String quadrDescriber(double a, double b, double c) {
-		String GraphOpensUp;
-		String equation = a + "^2  + " + b + "x + " + c;
+		//declare variables
+		String GraphOpens;
+		String Equation = "y = " + a + "^2 + " + b + "x + " + c;
 		double AxisOfSymmetry = (b * -1) / (2 * a);
 		double YOfVertex = (a * AxisOfSymmetry * AxisOfSymmetry) + (b * AxisOfSymmetry) + c;
+		String XIntercept = quadForm(a, b, c);
 		
-		if(a >= 0) {
-			GraphOpensUp = "up";
-		} else {
-			GraphOpensUp = "down";
+		//If AxisOfSymmetry is -0.0, turns it to 0.0
+		if(AxisOfSymmetry == 0){
+			AxisOfSymmetry *= -1;
 		}
-		return "Description of the graph of: \n" + 
-		equation + 
-		"\n \n Opens: " + GraphOpensUp +
-		"\n Vertex: " + AxisOfSymmetry + ", " + YOfVertex +
-		"\n x-intercept: " + 
-		"\n y-interrcept: " + c;
 		
+		//checks if the graph opens up or down and assign it to GraphOpens
+		if(a >= 0) {
+			GraphOpens = "Up";
+		} else {
+			GraphOpens = "Down";
+		}
+		
+		//returns description of graph including equation, opening direction, vertex, and x and y intercepts
+		return "Description of the graph of: \n" + Equation + 
+			"\n\nOpens: " + GraphOpens + 
+			"\nAxis of Symmetry: " + round2(AxisOfSymmetry) +
+			"\nVertex: (" + round2(AxisOfSymmetry) + ", " + round2(YOfVertex) + ")" +
+			"\nx-intercept(s): " + XIntercept +
+			"\ny-intercept: " + c + 
+			"\n";
 	}
 	
 	public static double absValue(double num) {	
 		//returns the absolute value of the input
 		if(num < 0) {
-			num*= -1;
+			num *= -1;
 		}
 		return num;
 	}
@@ -74,9 +82,11 @@ public class Quadratic {
 	
 	public static double sqrt(double num){
 		double guess = num;
-		//throws an exception when the input is negative
-		if(num <= 0) throw new IllegalArgumentException("Input cannot be negative");
 		
+		//returns 0 when num is equal or less than 0
+		if(num <= 0){
+			return 0.0;
+		}
 		//keeps guessing until the difference between guess^2 and num is less than 0.005
 		while(absValue(num - (guess * guess)) >= 0.005){
 			guess = (0.5 * ((num/guess) + guess));
@@ -88,12 +98,6 @@ public class Quadratic {
 		int numRoots;
 		double discrim = discriminant(a, b, c);
 		double QuadraticNumerator = sqrt(discrim);
-		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
-		
-		//Checks and returns a statement saying "no real roots" if there are no roots
-		if(discrim <= 0) {
-			return "no real roots";
-		}
 
 		double RootOne = round2(((-1 * b) + QuadraticNumerator) / (2 * a));
 		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
