@@ -5,7 +5,6 @@
  */
 
 public class Quadratic {
-	
 	public static String quadrDescriber(double a, double b, double c) {
 		//declare variables
 		String GraphOpens;
@@ -36,6 +35,7 @@ public class Quadratic {
 			"\n";
 	}
 	
+	//returns the absolute value of the input
 	public static double absValue(double num) {	
 		//returns the absolute value of the input
 		if(num < 0) {
@@ -98,7 +98,16 @@ public class Quadratic {
 		int numRoots;
 		double discrim = discriminant(a, b, c);
 		double QuadraticNumerator = sqrt(discrim);
-
+		
+		
+		if(discrim < 0) {
+			return "none";
+		} else if (discrim == 0){
+			return (-1 * b) / (2 * a) + "";
+		} else {
+			
+		}
+		
 		double RootOne = round2(((-1 * b) + QuadraticNumerator) / (2 * a));
 		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
 		
@@ -109,7 +118,7 @@ public class Quadratic {
 			numRoots = 2;
 		}
 		
-		//returns strings based on the number of roots and order it so the smaller root comes first
+		//returns all roots, with the smaller root before the bigger root
 		if(numRoots == 1) {
 			return RootOne + "";
 		}else {

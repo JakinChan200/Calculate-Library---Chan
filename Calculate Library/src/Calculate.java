@@ -129,11 +129,12 @@ public class Calculate {
 		return (((double) roundedNum) / 100);	
 	}
 	
+	//This method returns the result of a base raised to a certain power
 	public static double exponent(double base, int power) {
 		//throws negative numbers and 0
 		if(power <= 0) throw new IllegalArgumentException("you cannot enter a negaive power");
 		
-		//multiplies the base by the totalValue for the number of times dictated in the variable "power"
+		//multiplies the base by the totalValue "power" times
 		double totalValue = 1;
 		for(int i = 1; i <= power; i++) {
 			totalValue *= base;
@@ -141,6 +142,7 @@ public class Calculate {
 		return totalValue;
 	}
 	
+	//This method finds the factorial of the input
 	public static int factorial(int num){
 		int factorialResult = 1;
 		//throws negative numbers
@@ -153,10 +155,12 @@ public class Calculate {
 		return factorialResult;
 	}
 
+	//returns a boolean on whether the input is prime
 	public static boolean isPrime(int num){
 		boolean isItPrime = true;
 		
-		//goes through all numbers between 0 and num to see if it is divisible
+		//goes through all numbers between 0 and num and checks to see if it is divisible
+		//if none of the numbers are divisible, it is prime
 		for (int i = 2; i < num; i++){
 			if(isDivisibleBy(num, i) == true){
 				isItPrime = false;
@@ -165,6 +169,7 @@ public class Calculate {
 		return isItPrime;
 	}
 
+	//returns the greatest common factor of two numbers
 	public static int gcf(int num1, int num2){
 		int commonFactor = 1;
 		
@@ -179,6 +184,7 @@ public class Calculate {
 		return commonFactor;
 	}
 
+	//returns the square root of the input
 	public static double sqrt(double num){
 		double guess = num;
 		//throws an exception when the input is negative
@@ -191,6 +197,7 @@ public class Calculate {
 		return round2(guess);
 	}
 	
+	//returns the roots of a quadratic equation using the inputs of a, b, and c
 	public static String quadForm(int a, int b, int c) {
 		int numRoots;
 		double discrim = discriminant(a, b, c);

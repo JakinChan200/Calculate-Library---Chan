@@ -5,6 +5,8 @@
  */
 
 import java.util.*;
+
+//ask users for coefficients of a quadratic equation and prints the description of the graph
 public class QuadraticClient {
 	public static void main(String[] args) {
 		//Declare variables and prints introduction
