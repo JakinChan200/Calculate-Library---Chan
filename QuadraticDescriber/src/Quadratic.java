@@ -37,20 +37,19 @@ public class Quadratic {
 	
 	//returns the absolute value of the input
 	public static double absValue(double num) {	
-		//returns the absolute value of the input
 		if(num < 0) {
 			num *= -1;
 		}
 		return num;
 	}
 	
+	//returns the discriminant (b^2) - 4ac of three doubles
 	public static double discriminant(double a, double b, double c) {
-		//returns the discriminant of three doubles ((b^2) - 4ac)
 		return (b * b) - 4 * a *c;
 	}
 	
+	//returns the larger value of two doubles
 	public static double max(double num1, double num2) {
-		//returns the larger value between num1 and num2
 		if(num1 > num2) {
 			return num1;
 		} else {
@@ -58,8 +57,8 @@ public class Quadratic {
 		}
 	}
 	
+	//returns the smaller value of two doubles
 	public static double min(double num1, double num2) {
-		//takes the smaller value between num1 and num2
 		if(num1 < num2) {
 			return num1;
 		} else {
@@ -67,6 +66,7 @@ public class Quadratic {
 		}
 	}
 	
+	//returns the double rounded to the hundredths place
 	public static double round2(double numToRound) {
 		//rounds the hundredths place if the number in the thousandths place is five or greater
 		if(numToRound >= 0) {
@@ -80,6 +80,7 @@ public class Quadratic {
 		return (((double) roundedNum) / 100);	
 	}
 	
+	//returns the square root of a double
 	public static double sqrt(double num){
 		double guess = num;
 		
@@ -94,36 +95,19 @@ public class Quadratic {
 		return round2(guess);
 	}
 	
+	//returns the roots of a quadratic equation using the inputs of a, b, and c
 	public static String quadForm(double a, double b, double c) {
-		int numRoots;
 		double discrim = discriminant(a, b, c);
-		double QuadraticNumerator = sqrt(discrim);
-		
+		double sqrtOfDiscrim = sqrt(discrim);
 		
 		if(discrim < 0) {
 			return "none";
 		} else if (discrim == 0){
 			return (-1 * b) / (2 * a) + "";
 		} else {
-			
-		}
-		
-		double RootOne = round2(((-1 * b) + QuadraticNumerator) / (2 * a));
-		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
-		
-		//checks if there are one or two roots
-		if(RootOne == RootTwo) {
-			numRoots = 1;
-		}else {
-			numRoots = 2;
-		}
-		
-		//returns all roots, with the smaller root before the bigger root
-		if(numRoots == 1) {
-			return RootOne + "";
-		}else {
+			double RootOne = round2(((-1 * b) + sqrtOfDiscrim) / (2 * a));
+			double RootTwo = round2(((-1 * b) - sqrtOfDiscrim) / (2 * a));
 			return min(RootOne, RootTwo) + " and " + max(RootOne, RootTwo);
 		}
 	}
-	
 }
