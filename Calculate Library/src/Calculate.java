@@ -199,30 +199,21 @@ public class Calculate {
 	
 	//returns the roots of a quadratic equation using the inputs of a, b, and c
 	public static String quadForm(int a, int b, int c) {
-		int numRoots;
 		double discrim = discriminant(a, b, c);
-		double QuadraticNumerator = sqrt(discrim);
+		double sqrtOfDiscrim = sqrt(discrim);
+		
+		//throws an exception if a is zero
 		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
-		
-		//Checks and returns a statement saying "no real roots" if there are no roots
-		if(discrim <= 0) {
-			return "no real roots";
-		}
 
-		double RootOne = round2(((-1 * b) + QuadraticNumerator) / (2 * a));
-		double RootTwo = round2(((-1 * b) - QuadraticNumerator) / (2 * a));
-		
-		//checks if there are one or two roots
-		if(RootOne == RootTwo) {
-			numRoots = 1;
-		}else {
-			numRoots = 2;
-		}
-		
-		//returns strings based on the number of roots and order it so the smaller root comes first
-		if(numRoots == 1) {
-			return RootOne + "";
-		}else {
+		//checks if there are 0, 1, or 2 roots based on the discriminant and
+		//returns the roots
+		if(discrim < 0) {
+			return "none";
+		} else if (discrim == 0){
+			return (-1 * b) / (2 * a) + "";
+		} else {
+			double RootOne = round2(((-1 * b) + sqrtOfDiscrim) / (2 * a));
+			double RootTwo = round2(((-1 * b) - sqrtOfDiscrim) / (2 * a));
 			return min(RootOne, RootTwo) + " and " + max(RootOne, RootTwo);
 		}
 	}
