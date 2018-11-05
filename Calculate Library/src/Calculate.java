@@ -188,7 +188,7 @@ public class Calculate {
 	public static double sqrt(double num){
 		double guess = num;
 		//throws an exception when the input is negative
-		if(num <= 0) throw new IllegalArgumentException("Input cannot be negative");
+		//if(num < 0) throw new IllegalArgumentException("Input cannot be negative");
 		
 		//keeps guessing until the difference between guess^2 and num is less than 0.005
 		while(absValue(num - (guess * guess)) >= 0.005){
@@ -200,20 +200,19 @@ public class Calculate {
 	//returns the roots of a quadratic equation using the inputs of a, b, and c
 	public static String quadForm(int a, int b, int c) {
 		double discrim = discriminant(a, b, c);
-		double sqrtOfDiscrim = sqrt(discrim);
 		
 		//throws an exception if a is zero
 		if(a == 0) throw new IllegalArgumentException("a cannot be zero");
 
 		//checks if there are 0, 1, or 2 roots based on the discriminant and
-		//returns the roots
+		//returns the real roots if any.
 		if(discrim < 0) {
-			return "none";
+			return "no real roots";
 		} else if (discrim == 0){
 			return (-1 * b) / (2 * a) + "";
 		} else {
-			double RootOne = round2(((-1 * b) + sqrtOfDiscrim) / (2 * a));
-			double RootTwo = round2(((-1 * b) - sqrtOfDiscrim) / (2 * a));
+			double RootOne = round2(((-1 * b) + sqrt(discrim)) / (2 * a));
+			double RootTwo = round2(((-1 * b) - sqrt(discrim)) / (2 * a));
 			return min(RootOne, RootTwo) + " and " + max(RootOne, RootTwo);
 		}
 	}
