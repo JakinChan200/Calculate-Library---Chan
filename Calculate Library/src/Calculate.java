@@ -209,7 +209,7 @@ public class Calculate {
 		if(discrim < 0) {
 			return "no real roots";
 		} else if (discrim == 0){
-			return (-1 * b) / (2 * a) + "";
+			return round2((-1 * b) / (2 * a)) + "";
 		} else {
 			double RootOne = round2(((-1 * b) + sqrt(discrim)) / (2 * a));
 			double RootTwo = round2(((-1 * b) - sqrt(discrim)) / (2 * a));

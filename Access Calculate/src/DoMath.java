@@ -5,7 +5,7 @@
  */
 public class DoMath {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		System.out.println(Calculate.square(5));
 		System.out.println(Calculate.cube(2));
 		System.out.println(Calculate.average(10.0000000, 20.0000000));
@@ -27,6 +27,6 @@ public class DoMath {
 		System.out.println(Calculate.isPrime(3));
 		System.out.println(Calculate.gcf(250, 350));
 		System.out.println(Calculate.sqrt(10.00));
-		System.out.println(Calculate.quadForm(10, 2, 24));
+		System.out.println(Calculate.quadForm(3, 2, 5));
 	}
 }
